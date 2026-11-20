@@ -15,9 +15,14 @@ try:
     artifacts = load_artifacts()
     vectorizer = artifacts['vectorizer']
     model = artifacts['model']
+    accuracy = artifacts['accuracy']
 except FileNotFoundError:
     st.error("Artifacts file 'career_predictor_model.pkl' not found. Please run your training script first!")
     st.stop()
+
+st.subheader("Model Performance")
+st.metric(label="Test Accuracy", value=f"{accuracy:.2%}")
+st.divider()
 
 st.subheader("Your Profile Details")
 
